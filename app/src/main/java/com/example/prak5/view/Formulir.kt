@@ -21,7 +21,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.material3.Button
 import com.example.prak5.R
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -79,6 +84,14 @@ fun FormIsian(
                 label = {Text(text = "Alamat")},
                 onValueChange = {},
             )
+            Spacer(modifier = Modifier.height(30.dp))
+            Button(
+                modifier = Modifier.fillMaxWidth(1f)
+                    .padding(all = 25.dp),
+                onClick = OnSubmitBtnClick
+            ) {
+                Text(stringResource(id = R.string.submit))
+            }
         }
     }
 }
