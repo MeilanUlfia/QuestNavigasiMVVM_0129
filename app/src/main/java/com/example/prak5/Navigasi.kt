@@ -9,6 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.prak5.view.FormIsian
+import com.example.prak5.view.TampilData
 
 enum class Navigasi {
     FormulirSaya,
@@ -33,6 +34,17 @@ fun DataApp(
                     }
                 )
             }
+            composable(route = Navigasi.Detail.name){
+                TampilData(
+                    onBackBtnClick = {cancelAndBackToFormulirSaya(navController)}
+                )
+            }
         }
     }
+}
+
+private fun cancelAndBackToFormulirSaya(
+    navController: NavHostController
+) {
+    navController.popBackStack(Navigasi.FormulirSaya.name, inclusive = false)
 }
