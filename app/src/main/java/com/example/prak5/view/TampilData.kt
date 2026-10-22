@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import com.example.prak5.R
 
@@ -14,6 +15,11 @@ import com.example.prak5.R
 fun TampilData(
     onBackBtnClick: () -> Unit
 ) {
+    val items = listOf(
+        Pair(stringResource(id = R.string.nama_lengkap), "Contoh Nama"),
+        Pair(stringResource(id = R.string.jenis_kelamin), "Lainnya"),
+        Pair(stringResource(id = R.string.alamat), "Yogyakarta")
+    )
     Scaffold(
         modifier = Modifier,
         topBar = {
@@ -29,6 +35,17 @@ fun TampilData(
             modifier = Modifier.padding(isiRuang),
             verticalArrangement = Arrangement.SpaceBetween
         ) {
+            Column(
+                modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_medium)),
+                verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_small))
+            ) {
+                items.forEach { item ->
+                    Column {
+                        Text(text = item.first.uppercase())
+                        Text(text = item.second)
+                    }
+                }
+            }
         }
     }
 }
